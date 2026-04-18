@@ -1,0 +1,22 @@
+async function fetchResults() {
+    const res = await fetch("https://raw.githubusercontent.com/swapnillad8/Product-Sourcing-Portal/main/results.csv");
+    const text = await res.text();
+
+    const rows = text.split("\n").slice(1);
+
+    const body = document.getElementById('results-body');
+    body.innerHTML = "";
+
+    rows.forEach(r => {
+        if(!r) return;
+        const cols = r.split(",");
+
+        body.innerHTML += `
+        <tr>
+            <td class="p-6 font-bold text-white">${cols[0]}</td>
+            <td class="p-6 text-xs">India / OEM</td>
+            <td class="p-6 text-xs">${cols.slice(1,5).join(" | ")}</td>
+            <td class="p-6 text-emerald-400 font-bold">Completed</td>
+        </tr>`;
+    });
+}
