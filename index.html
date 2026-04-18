@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SKU Miner Pro</title>
+    <title>SKU MINER v4.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
@@ -16,48 +16,50 @@
 <body class="p-8 min-h-screen">
     <div class="max-w-7xl mx-auto">
         <header class="flex justify-between items-center mb-10">
-            <h1 class="text-3xl font-black text-white tracking-tighter">SKU <span class="text-blue-500">MINER</span></h1>
-            <div class="glass px-4 py-2 rounded-xl text-[10px] font-bold text-emerald-400 uppercase tracking-widest">● System Ready</div>
+            <h1 class="text-3xl font-black text-white tracking-tighter uppercase">SKU <span class="text-blue-500">MINER</span></h1>
+            <div class="glass px-4 py-2 rounded-xl text-[10px] font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> SYSTEM READY
+            </div>
         </header>
 
         <section class="mb-10">
             <h3 class="text-[10px] font-black text-slate-500 uppercase mb-4 tracking-widest">Mining Field Mapping</h3>
             <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
-                <label><input type="checkbox" checked disabled><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">BRAND</div></label>
-                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">COLOR</div></label>
-                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">STORAGE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CONNECTIVITY</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CAPACITY</div></label>
+                <label><input type="checkbox" checked disabled><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">BRAND</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">COLOR</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">STORAGE</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">CONNECTIVITY</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">DISPLAY</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">CAPACITY</div></label>
             </div>
         </section>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-4">
-                <div class="glass p-6 rounded-[2rem]">
-                    <label class="text-[10px] font-bold text-slate-500 uppercase block mb-3">Bulk Model Input</label>
-                    <textarea id="model-input" rows="8" class="w-full bg-slate-900 border border-white/10 rounded-2xl p-4 text-sm font-mono mb-4 outline-none" placeholder="Paste Model (e.g. SM-E076BDBAINS)"></textarea>
-                    <button onclick="startMining()" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-black text-xs uppercase tracking-widest transition-all">Start Mining</button>
+                <div class="glass p-8 rounded-[2.5rem]">
+                    <label class="text-[10px] font-black text-slate-500 uppercase block mb-3">Bulk Model Input</label>
+                    <textarea id="model-input" rows="10" class="w-full bg-slate-900 border border-white/10 rounded-2xl p-5 text-sm font-mono outline-none mb-6 focus:border-blue-500" placeholder="SM-E076BDBAINS"></textarea>
+                    <button onclick="startMining()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">Start Mining</button>
                 </div>
             </div>
 
             <div class="lg:col-span-8">
-                <div class="glass rounded-[2rem] overflow-hidden">
-                    <div class="p-4 border-b border-white/5 flex justify-between bg-white/[0.01]">
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Extraction Results</span>
+                <div class="glass rounded-[2.5rem] overflow-hidden">
+                    <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Extraction Results</span>
                         <div class="flex gap-2">
-                            <button onclick="clearAll()" class="px-3 py-1 bg-white/5 hover:bg-red-500/10 hover:text-red-400 rounded-lg text-[10px] font-bold uppercase">Clear</button>
-                            <button onclick="exportCSV()" class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg text-[10px] font-bold uppercase">Export CSV</button>
+                            <button onclick="clearAll()" class="px-4 py-2 bg-white/5 hover:bg-red-500/10 rounded-xl text-[10px] font-bold uppercase">Clear</button>
+                            <button onclick="exportCSV()" class="px-4 py-2 bg-blue-600/10 text-blue-400 rounded-xl text-[10px] font-bold uppercase">Export CSV</button>
                         </div>
                     </div>
-                    <div class="overflow-x-auto h-[400px]">
+                    <div class="overflow-x-auto h-[480px]">
                         <table class="w-full text-left text-sm">
-                            <thead class="sticky top-0 bg-[#0b0f1a]">
-                                <tr class="border-b border-white/5">
-                                    <th class="p-6 text-slate-500 text-[10px] font-bold uppercase">Model</th>
-                                    <th class="p-6 text-slate-500 text-[10px] font-bold uppercase">Color</th>
-                                    <th class="p-6 text-slate-500 text-[10px] font-bold uppercase">Attributes</th>
-                                    <th class="p-6 text-slate-500 text-[10px] font-bold uppercase">Status</th>
+                            <thead class="sticky top-0 bg-[#0b0f1a] border-b border-white/5">
+                                <tr>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase">Model</th>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase">Color</th>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase">Attributes</th>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase">Status</th>
                                 </tr>
                             </thead>
                             <tbody id="results-body" class="divide-y divide-white/5"></tbody>
@@ -70,23 +72,37 @@
 
     <script>
         function clearAll() { document.getElementById('model-input').value = ''; document.getElementById('results-body').innerHTML = ''; }
+        
+        // This function triggers the UI row, but you MUST run the GitHub Action to get real data
+        function startMining() {
+            const input = document.getElementById('model-input').value.trim();
+            if(!input) return alert("Enter a model first!");
+            const models = input.split('\n');
+            const body = document.getElementById('results-body');
+            
+            models.forEach(m => {
+                if(m.trim()) {
+                    body.innerHTML += `
+                    <tr class="hover:bg-white/[0.02]">
+                        <td class="p-6 font-bold text-white">${m.trim()}</td>
+                        <td class="p-6 text-slate-500 italic text-xs animate-pulse">Scanning...</td>
+                        <td class="p-6 text-slate-500 italic text-xs animate-pulse">Waiting...</td>
+                        <td class="p-6">
+                            <span class="text-blue-400 font-black uppercase text-[9px] tracking-tighter">RUNNING: ${m.trim()}</span>
+                        </td>
+                    </tr>`;
+                }
+            });
+        }
+
         function exportCSV() {
             const table = document.querySelector("table");
-            let csv = Array.from(table.rows).map(row => Array.from(row.cells).map(cell => `"${cell.innerText.replace(/\n/g, ' ')}"`).join(",")).join("\n");
+            let csv = Array.from(table.rows).map(row => Array.from(row.cells).map(cell => `"${cell.innerText}"`).join(",")).join("\n");
             const blob = new Blob([csv], { type: 'text/csv' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = "Mining_Results.csv";
+            link.download = "Mining_Report.csv";
             link.click();
-        }
-        function startMining() {
-            const input = document.getElementById('model-input').value.trim();
-            if(!input) return;
-            const models = input.split('\n');
-            const body = document.getElementById('results-body');
-            models.forEach(m => {
-                body.innerHTML += `<tr class="hover:bg-white/5"><td class="p-6 font-bold text-white">${m}</td><td class="p-6 text-slate-500 italic text-xs">Scanning...</td><td class="p-6 text-slate-500 italic text-xs">Waiting...</td><td class="p-6"><span class="text-blue-400 font-bold uppercase text-[9px] animate-pulse">Running: ${m}</span></td></tr>`;
-            });
         }
     </script>
 </body>
