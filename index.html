@@ -3,142 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Product Miner Pro</title>
+    <title>Global SKU & Attribute Miner</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background: #0b0f1a; color: #e2e8f0; }
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .attr-card { transition: all 0.2s ease; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; }
-        input[type="checkbox"]:checked + .attr-card { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: #60a5fa; box-shadow: 0 0 15px rgba(59, 130, 246, 0.1); }
-        .neon-text { text-shadow: 0 0 8px rgba(59, 130, 246, 0.5); }
+        input[type="checkbox"]:checked + .attr-card { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: #60a5fa; }
+        input[type="checkbox"] { display: none; }
     </style>
 </head>
 <body class="p-4 md:p-8 min-h-screen">
-
     <div class="max-w-7xl mx-auto">
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
-            <div>
-                <h1 class="text-3xl font-extrabold tracking-tighter text-white">DATA <span class="text-blue-500 underline decoration-blue-500/30 underline-offset-8">MINING</span> PORTAL</h1>
-                <p class="text-slate-500 text-sm mt-2 font-medium uppercase tracking-widest">Multi-OEM Sourcing Engine</p>
-            </div>
-            <div class="glass px-6 py-3 rounded-2xl border-emerald-500/20 flex items-center gap-3">
-                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span class="text-xs font-bold text-emerald-400 uppercase tracking-tighter">Engine v3.2 Active</span>
-            </div>
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-extrabold text-white tracking-tighter">SKU <span class="text-blue-500">MINER</span></h1>
+            <div class="glass px-4 py-2 rounded-xl text-xs font-bold text-emerald-400 uppercase tracking-widest">● System Ready</div>
         </header>
 
-        <section class="mb-10">
-            <h3 class="text-[10px] font-black text-slate-500 uppercase mb-6 tracking-[0.3em] ml-2">Configuration: Field Mapping</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                
-                <label>
-                    <input type="checkbox" class="hidden" checked disabled>
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Brand</div>
-                </label>
-                <label>
-                    <input type="checkbox" class="hidden" checked>
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Subcategory</div>
-                </label>
-
-                <label>
-                    <input type="checkbox" class="hidden" checked>
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Ram/Storage</div>
-                </label>
-                <label>
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Connectivity</div>
-                </label>
-                <label>
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Display Size</div>
-                </label>
-                <label>
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Display Type</div>
-                </label>
-
-                <label>
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight">Capacity/Load Type</div>
-                </label>
-                <label class="md:col-span-1 lg:col-span-1">
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight border-dashed border-blue-500/40">Door / Split / Top-Front</div>
-                </label>
-                <label class="md:col-span-2 lg:col-span-2">
-                    <input type="checkbox" class="hidden">
-                    <div class="attr-card p-4 rounded-xl text-center text-xs font-bold uppercase tracking-tight border-double border-blue-500/50">Features (Inverter / Automatic / Fully)</div>
-                </label>
+        <section class="mb-8">
+            <h3 class="text-[10px] font-black text-slate-500 uppercase mb-4 tracking-widest">Mining Field Mapping</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <label><input type="checkbox" checked disabled><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">BRAND</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">SUBCATEGORY</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">RAM/STORAGE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CONNECTIVITY</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY SIZE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY TYPE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CAPACITY/LOAD TYPE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold border-dashed border-blue-500/50">DOOR/SPLIT TYPE</div></label>
+                <label class="md:col-span-2"><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold border-double border-blue-500/50">FEATURES (INVERTER/AUTO)</div></label>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-4 space-y-6">
-                <div class="glass p-8 rounded-[2.5rem] border-white/5 shadow-2xl">
-                    <div class="mb-8">
-                        <label class="text-[10px] font-black text-slate-500 uppercase block mb-4 tracking-widest">Select Origin</label>
-                        <select class="w-full bg-slate-900/50 border border-white/10 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-blue-500/50 transition-all font-semibold text-sm">
-                            <option>India (IN)</option>
-                            <option>Middle East (UAE/KSA)</option>
-                            <option>Europe (EU)</option>
-                            <option>North America (US)</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-8">
-                        <label class="text-[10px] font-black text-slate-500 uppercase block mb-4 tracking-widest">Bulk Model Input</label>
-                        <textarea rows="10" placeholder="Enter models (e.g., A3520, WA70A4002GS)" 
-                            class="w-full bg-slate-900/50 border border-white/10 rounded-2xl p-5 outline-none focus:ring-2 focus:ring-blue-500/50 transition-all font-mono text-sm leading-relaxed"></textarea>
-                    </div>
-
-                    <button class="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
-                        Start Mining Data
-                    </button>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-4 space-y-4">
+                <div class="glass p-6 rounded-[2rem]">
+                    <select id="region" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 mb-4 text-sm outline-none">
+                        <option>India (IN)</option>
+                        <option>Middle East (UAE/KSA)</option>
+                        <option>Europe (EU)</option>
+                    </惫option>
+                    <textarea id="model-input" rows="8" class="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm font-mono mb-4 outline-none" placeholder="Paste Models (A3520, RT28...)"></textarea>
+                    <button onclick="mockMining()" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-black text-xs uppercase tracking-widest transition-all">Start Mining</button>
                 </div>
             </div>
 
             <div class="lg:col-span-8">
-                <div class="glass rounded-[2.5rem] overflow-hidden border-white/5">
-                    <div class="p-6 border-b border-white/5 flex justify-between items-center bg-white/[0.01]">
-                        <span class="text-xs font-black uppercase tracking-widest text-slate-400">Extraction Results</span>
+                <div class="glass rounded-[2rem] overflow-hidden">
+                    <div class="p-4 border-b border-white/5 flex justify-between bg-white/[0.01]">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Extraction</span>
                         <div class="flex gap-2">
-                            <button class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-[10px] font-bold uppercase transition-all">Clear</button>
-                            <button class="px-4 py-2 bg-blue-600/10 text-blue-400 hover:bg-blue-600/20 rounded-xl text-[10px] font-bold uppercase transition-all">Export CSV</button>
+                            <button onclick="clearAll()" class="px-3 py-1 bg-white/5 hover:bg-red-500/20 rounded-lg text-[10px] font-bold uppercase">Clear</button>
+                            <button onclick="exportCSV()" class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg text-[10px] font-bold uppercase">Export CSV</button>
                         </div>
                     </div>
-                    
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
-                            <thead class="bg-white/[0.02] text-slate-500 text-[10px] font-black uppercase tracking-widest">
+                    <div class="overflow-x-auto max-h-[400px]">
+                        <table id="result-table" class="w-full text-left text-xs">
+                            <thead class="bg-slate-900 sticky top-0">
                                 <tr>
-                                    <th class="p-6">Product & Model</th>
-                                    <th class="p-6">Sourcing Path</th>
-                                    <th class="p-6">Attributes Identified</th>
-                                    <th class="p-6">Progress</th>
+                                    <th class="p-4 text-slate-500 font-bold uppercase">Model Info</th>
+                                    <th class="p-4 text-slate-500 font-bold uppercase">Attributes</th>
+                                    <th class="p-4 text-slate-500 font-bold uppercase">Status</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-white/5">
-                                <tr class="hover:bg-white/[0.03] transition-colors cursor-pointer group">
-                                    <td class="p-6">
-                                        <div class="font-black text-white group-hover:text-blue-400 transition-colors">WA70A4002GS</div>
-                                        <div class="text-[10px] text-slate-500 uppercase font-bold mt-1">Samsung Washing Machine</div>
-                                    </td>
-                                    <td class="p-6 text-slate-400 font-medium">India / OEM</td>
-                                    <td class="p-6">
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-blue-500/10 text-blue-400 text-[9px] font-black px-2 py-1 rounded-md uppercase">Top Load</span>
-                                            <span class="bg-emerald-500/10 text-emerald-400 text-[9px] font-black px-2 py-1 rounded-md uppercase">Fully Automatic</span>
-                                        </div>
-                                    </td>
-                                    <td class="p-6"><span class="text-[10px] font-black text-emerald-500 uppercase bg-emerald-500/5 px-3 py-1 rounded-full border border-emerald-500/20">Mined</span></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="results-body" class="divide-y divide-white/5"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function clearAll() {
+            document.getElementById('model-input').value = '';
+            document.getElementById('results-body').innerHTML = '';
+        }
+
+        function exportCSV() {
+            const rows = Array.from(document.querySelectorAll("tr"));
+            if (document.getElementById('results-body').rows.length === 0) return alert("No data!");
+            let csv = rows.map(r => Array.from(r.querySelectorAll("th,td")).map(c => `"${c.innerText.replace(/\n/g, ' ')}"`).join(",")).join("\n");
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Mining_Results.csv";
+            link.click();
+        }
+
+        function mockMining() {
+            const input = document.getElementById('model-input').value.trim();
+            if(!input) return;
+            const models = input.split('\n');
+            const body = document.getElementById('results-body');
+            models.forEach(m => {
+                body.innerHTML += `<tr class="hover:bg-white/5 transition-all"><td class="p-4 font-bold text-blue-400">${m}</td><td class="p-4 italic text-slate-500 text-[10px]">Mining regional OEM sites...</td><td class="p-4 text-emerald-400">● Running</td></tr>`;
+            });
+        }
+    </script>
 </body>
 </html>
