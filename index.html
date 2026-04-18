@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Mining Portal v3.2</title>
+    <title>Data Mining Portal v3.5</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -12,7 +12,6 @@
         .attr-card { transition: all 0.2s ease; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; }
         input[type="checkbox"]:checked + .attr-card { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: #60a5fa; }
         input[type="checkbox"] { display: none; }
-        .btn-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
     </style>
 </head>
 <body class="p-6 md:p-10 min-h-screen">
@@ -22,9 +21,7 @@
                 <h1 class="text-3xl font-black text-white tracking-tighter uppercase">Data <span class="text-blue-500">Mining</span> Portal</h1>
                 <p class="text-[10px] text-slate-500 font-bold tracking-[0.3em] mt-1 uppercase">Multi-OEM Sourcing Engine</p>
             </div>
-            <div class="glass px-4 py-2 rounded-xl text-[10px] font-bold text-emerald-400 uppercase tracking-widest border border-emerald-500/20">
-                ● Engine V3.2 Active
-            </div>
+            <div class="glass px-4 py-2 rounded-xl text-[10px] font-bold text-emerald-400 border border-emerald-500/20 uppercase tracking-widest">● Engine V3.5 Active</div>
         </header>
 
         <section class="mb-10">
@@ -33,12 +30,14 @@
                 <label><input type="checkbox" checked disabled><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">BRAND</div></label>
                 <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">SUBCATEGORY</div></label>
                 <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">RAM/STORAGE</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">COLOR</div></label>
                 <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">CONNECTIVITY</div></label>
-                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">DISPLAY SIZE</div></label>
+                
                 <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">DISPLAY TYPE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">CAPACITY/LOAD TYPE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold border-dashed border-blue-500/50">DOOR / SPLIT / TOP-FRONT</div></label>
-                <label class="md:col-span-2"><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">FEATURES (INVERTER / AUTOMATIC / FULLY)</div></label>
+                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">DISPLAY SIZE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">CAPACITY/LOAD</div></label>
+                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold border-dashed border-blue-500/50">DOOR/SPLIT TYPE</div></label>
+                <label><input type="checkbox"><div class="attr-card p-4 rounded-xl text-center text-[10px] font-bold">FEATURES (INVERTER/AUTO)</div></label>
             </div>
         </section>
 
@@ -47,19 +46,17 @@
                 <div class="glass p-8 rounded-[2.5rem]">
                     <div class="mb-6">
                         <label class="text-[10px] font-bold text-slate-500 uppercase block mb-3">Select Origin</label>
-                        <select id="origin" class="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm outline-none focus:border-blue-500">
+                        <select id="origin" class="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm focus:border-blue-500 outline-none">
                             <option>India (IN)</option>
                             <option>Middle East (UAE)</option>
                             <option>Europe (EU)</option>
                         </select>
                     </div>
-                    
                     <div class="mb-6">
                         <label class="text-[10px] font-bold text-slate-500 uppercase block mb-3">Bulk Model Input</label>
-                        <textarea id="model-input" rows="8" class="w-full bg-slate-900 border border-white/10 rounded-xl p-5 text-sm font-mono outline-none focus:border-blue-500" placeholder="Enter models (e.g., WA70A4002GS)"></textarea>
+                        <textarea id="model-input" rows="8" class="w-full bg-slate-900 border border-white/10 rounded-xl p-5 text-sm font-mono focus:border-blue-500 outline-none" placeholder="SM-E076BDBAINS"></textarea>
                     </div>
-
-                    <button onclick="startMining()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 rounded-2xl font-black text-xs uppercase tracking-widest transition-all btn-glow">Start Sourcing</button>
+                    <button onclick="startMining()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-blue-600/20 transition-all">Start Sourcing</button>
                 </div>
             </div>
 
@@ -72,18 +69,17 @@
                             <button onclick="exportCSV()" class="px-4 py-2 bg-blue-600/10 text-blue-400 rounded-xl text-[10px] font-bold uppercase">Export CSV</button>
                         </div>
                     </div>
-                    <div class="overflow-x-auto h-[450px]">
+                    <div class="overflow-x-auto h-[480px]">
                         <table class="w-full text-left text-sm">
                             <thead class="sticky top-0 bg-[#0b0f1a] border-b border-white/5">
                                 <tr class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">
                                     <th class="p-6">Product & Model</th>
                                     <th class="p-6">Sourcing Path</th>
                                     <th class="p-6">Attributes Identified</th>
-                                    <th class="p-6">Progress</th>
+                                    <th class="p-6">Progress Status</th>
                                 </tr>
                             </thead>
-                            <tbody id="results-body" class="divide-y divide-white/5">
-                                </tbody>
+                            <tbody id="results-body" class="divide-y divide-white/5"></tbody>
                         </table>
                     </div>
                 </div>
@@ -93,12 +89,11 @@
 
     <script>
         function clearAll() { document.getElementById('model-input').value = ''; document.getElementById('results-body').innerHTML = ''; }
-
         function startMining() {
             const input = document.getElementById('model-input').value.trim();
             if(!input) return;
-            const origin = document.getElementById('origin').value;
             const models = input.split('\n');
+            const origin = document.getElementById('origin').value;
             const body = document.getElementById('results-body');
             
             models.forEach(m => {
@@ -111,25 +106,24 @@
                         </td>
                         <td class="p-6 text-slate-400 text-xs">${origin} / OEM</td>
                         <td class="p-6">
-                            <div class="flex gap-2">
-                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded text-[9px] font-bold uppercase">Waiting...</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded text-[9px] font-bold uppercase animate-pulse">Waiting for Engine...</span>
                             </div>
                         </td>
                         <td class="p-6">
-                            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-[9px] font-black uppercase">Mined</span>
+                            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-[9px] font-black uppercase">Pending</span>
                         </td>
                     </tr>`;
                 }
             });
         }
-
         function exportCSV() {
             const rows = Array.from(document.querySelectorAll("tr"));
             let csv = rows.map(r => Array.from(r.querySelectorAll("th,td")).map(c => `"${c.innerText}"`).join(",")).join("\n");
             const blob = new Blob([csv], { type: 'text/csv' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = "Sourcing_Data.csv";
+            link.download = "Sourcing_Report.csv";
             link.click();
         }
     </script>
