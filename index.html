@@ -141,6 +141,29 @@
         })
     });
 }
+        async function startMining() {
+    const input = document.getElementById('model-input').value.trim();
+    if(!input) return;
+
+    const models = input.split('\n');
+
+    // show pending UI
+    const body = document.getElementById('results-body');
+    body.innerHTML = models.map(m => `
+        <tr>
+            <td class="p-6 text-white font-bold">${m}</td>
+            <td class="p-6 text-xs">India / OEM</td>
+            <td class="p-6 text-xs text-blue-400">Processing...</td>
+            <td class="p-6 text-yellow-400">Running</td>
+        </tr>
+    `).join("");
+
+    await uploadModels(models);
+    await triggerMining(models);
+
+    // wait for GitHub Action (~20–40 sec)
+    setTimeout(fetchResults, 30000);
+}
     </script>
 </body>
 </html>
