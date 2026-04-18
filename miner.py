@@ -4,53 +4,48 @@ import csv
 import re
 import os
 
-def mine_product(model):
+def mine_sku_data(model):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-    # Searching specifically for technical specifications
-    url = f"https://www.google.com/search?q={model}+specifications+features"
+    # Targeted search query for the specific model
+    search_url = f"https://www.google.com/search?q={model}+specifications+features"
     
     result = {
         "Model": model,
+        "Color": "N/A",
         "Display_Type": "N/A",
         "Door_Split": "N/A",
         "Features": "N/A",
-        "Status": f"Not Found: {model}"
+        "Progress": "Mined"
     }
 
     try:
-        response = requests.get(url, headers=headers, timeout=15)
+        response = requests.get(search_url, headers=headers, timeout=15)
         soup = BeautifulSoup(response.text, 'html.parser')
-        page_text = soup.get_text().lower()
+        text = soup.get_text().lower()
 
-        # 1. DISPLAY TYPE (AMOLED, LCD, LED, OLED)
-        display_types = ["amoled", "super amoled", "lcd", "led", "oled", "tft"]
-        for d in display_types:
-            if d in page_text:
-                result["Display_Type"] = d.upper()
+        # 1. Color Sniffer
+        color_palette = ["Black", "White", "Silver", "Navy Blue", "Graphite", "Mint", "Gold"]
+        for c in color_palette:
+            if c.lower() in text:
+                result["Color"] = c
                 break
 
-        # 2. DOOR / SPLIT TYPE (Top Load, Front Load, Split AC, Double Door)
-        types = ["top load", "front load", "split", "window", "double door", "single door"]
-        for t in types:
-            if t in page_text:
-                result["Door_Split"] = t.title()
-                break
+        # 2. Display Type Sniffer
+        if "amoled" in text or "oled" in text: result["Display_Type"] = "AMOLED"
+        elif "lcd" in text or "tft" in text: result["Display_Type"] = "LCD"
 
-        # 3. FEATURES (Inverter, Automatic, Fully Automatic)
-        features = []
-        if "inverter" in page_text: features.append("Inverter")
-        if "fully automatic" in page_text: features.append("Fully Auto")
-        elif "semi automatic" in page_text: features.append("Semi Auto")
-        result["Features"] = ", ".join(features) if features else "N/A"
+        # 3. Door / Split Type Sniffer
+        if "split" in text: result["Door_Split"] = "Split AC"
+        elif "double door" in text: result["Door_Split"] = "Double Door Fridge"
 
-        # STATUS LOGIC
-        if result["Display_Type"] != "N/A" or result["Features"] != "N/A":
-            result["Status"] = f"Found: {model}"
-        else:
-            result["Status"] = f"Partial Found: {model}"
+        # 4. Features Sniffer
+        features_found = []
+        if "inverter" in text: features_found.append("Inverter")
+        if "fully automatic" in text: features_found.append("Fully Auto")
+        result["Features"] = ", ".join(features_found) if features_found else "N/A"
 
     except Exception:
-        result["Status"] = f"Error: {model}"
+        result["Progress"] = "Error"
 
     return result
 
@@ -60,7 +55,8 @@ if __name__ == "__main__":
             models = [line.strip() for line in f if line.strip()]
         
         with open('results.csv', 'w', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=["Model", "Display_Type", "Door_Split", "Features", "Status"])
+            fieldnames = ["Model", "Color", "Display_Type", "Door_Split", "Features", "Progress"]
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for m in models:
-                writer.writerow(mine_product(m))
+                writer.writerow(mine_sku_data(m))
