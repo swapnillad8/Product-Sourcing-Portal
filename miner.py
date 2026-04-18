@@ -1,13 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
-import re
 import os
 
 def mine_sku_data(model):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-    # Targeted search query for the specific model
-    search_url = f"https://www.google.com/search?q={model}+specifications+features"
+    # Updated headers to prevent blocking and speed up response
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
+    }
+    # Targeted search for faster result isolation
+    search_url = f"https://www.google.com/search?q=Samsung+India+{model}+specs+color"
     
     result = {
         "Model": model,
@@ -19,44 +21,30 @@ def mine_sku_data(model):
     }
 
     try:
-        response = requests.get(search_url, headers=headers, timeout=15)
+        # Reduced timeout to 10s to prevent long hangs
+        response = requests.get(search_url, headers=headers, timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
         text = soup.get_text().lower()
 
-        # 1. Color Sniffer
-        color_palette = ["Black", "White", "Silver", "Navy Blue", "Graphite", "Mint", "Gold"]
-        for c in color_palette:
-            if c.lower() in text:
-                result["Color"] = c
-                break
-
-        # 2. Display Type Sniffer
-        if "amoled" in text or "oled" in text: result["Display_Type"] = "AMOLED"
-        elif "lcd" in text or "tft" in text: result["Display_Type"] = "LCD"
-
-        # 3. Door / Split Type Sniffer
-        if "split" in text: result["Door_Split"] = "Split AC"
-        elif "double door" in text: result["Door_Split"] = "Double Door Fridge"
-
-        # 4. Features Sniffer
-        features_found = []
-        if "inverter" in text: features_found.append("Inverter")
-        if "fully automatic" in text: features_found.append("Fully Auto")
-        result["Features"] = ", ".join(features_found) if features_found else "N/A"
-
+        # Fast keyword matching
+        if "black" in text: result["Color"] = "Phantom Black"
+        if "blue" in text: result["Color"] = "Spotlight Blue"
+        if "amoled" in text: result["Display_Type"] = "AMOLED"
+        if "inverter" in text: result["Features"] = "Inverter"
+        
     except Exception:
         result["Progress"] = "Error"
 
     return result
 
 if __name__ == "__main__":
+    # Ensure this reads the latest models input by you in the UI
     if os.path.exists('models.txt'):
         with open('models.txt', 'r') as f:
             models = [line.strip() for line in f if line.strip()]
         
         with open('results.csv', 'w', newline='') as f:
-            fieldnames = ["Model", "Color", "Display_Type", "Door_Split", "Features", "Progress"]
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer = csv.DictWriter(f, fieldnames=["Model", "Color", "Display_Type", "Door_Split", "Features", "Progress"])
             writer.writeheader()
             for m in models:
                 writer.writerow(mine_sku_data(m))
