@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKU Miner Pro</title>
+    <title>Global SKU Miner v4.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -17,58 +17,59 @@
 <body class="p-4 md:p-8 min-h-screen">
     <div class="max-w-7xl mx-auto">
         <header class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-extrabold text-white tracking-tighter">SKU <span class="text-blue-500">MINER</span></h1>
-            <div class="glass px-4 py-2 rounded-xl text-xs font-bold text-emerald-400 uppercase tracking-widest">● SYSTEM READY</div>
+            <h1 class="text-3xl font-extrabold text-white tracking-tighter uppercase">Mining <span class="text-blue-500 underline decoration-blue-500/30 underline-offset-8">Portal</span></h1>
+            <div class="glass px-4 py-2 rounded-xl text-[10px] font-black text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Engine Active
+            </div>
         </header>
 
         <section class="mb-8">
-            <h3 class="text-[10px] font-black text-slate-500 uppercase mb-4 tracking-widest">MINING FIELD MAPPING</h3>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <h3 class="text-[10px] font-black text-slate-500 uppercase mb-4 tracking-[0.2em]">Field Mapping Configuration</h3>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
                 <label><input type="checkbox" checked disabled><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">BRAND</div></label>
-                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">SUBCATEGORY</div></label>
-                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">RAM/STORAGE</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">COLOR</div></label>
+                <label><input type="checkbox" checked><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">STORAGE</div></label>
                 <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CONNECTIVITY</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY SIZE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY TYPE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">CAPACITY/LOAD TYPE</div></label>
-                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold border-dashed border-blue-500/50">DOOR/SPLIT TYPE</div></label>
-                <label class="md:col-span-2"><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold border-double border-blue-500/50">FEATURES (INVERTER/AUTO)</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">DISPLAY</div></label>
+                <label><input type="checkbox"><div class="attr-card p-3 rounded-xl text-center text-[10px] font-bold">LOAD TYPE</div></label>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div class="lg:col-span-4 space-y-4">
-                <div class="glass p-6 rounded-[2rem]">
-                    <label class="text-[10px] font-bold text-slate-500 uppercase block mb-2">Select Origin</label>
-                    <select id="region" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 mb-4 text-sm outline-none">
-                        <option>India (IN)</option>
-                        <option>Middle East (UAE/KSA)</option>
-                        <option>Europe (EU)</option>
-                    </select>
-                    
-                    <label class="text-[10px] font-bold text-slate-500 uppercase block mb-2">Bulk Model Input</label>
-                    <textarea id="model-input" rows="8" class="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm font-mono mb-4 outline-none" placeholder="Enter models (e.g., A3520, WA704002GS)"></textarea>
-                    
-                    <button onclick="startMining()" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-black text-xs uppercase tracking-widest transition-all">Start Mining</button>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-6">
+                <div class="glass p-6 rounded-[2rem] border-white/5 shadow-2xl">
+                    <div class="mb-4">
+                        <label class="text-[10px] font-black text-slate-500 uppercase block mb-2 tracking-widest">Select Origin</label>
+                        <select id="region" class="w-full bg-slate-900/50 border border-white/10 rounded-xl p-3 text-sm outline-none focus:ring-1 focus:ring-blue-500">
+                            <option>India (IN)</option>
+                            <option>Europe (EU)</option>
+                            <option>Middle East (UAE)</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="text-[10px] font-black text-slate-500 uppercase block mb-2 tracking-widest">Model Input</label>
+                        <textarea id="model-input" rows="8" class="w-full bg-slate-900/50 border border-white/10 rounded-xl p-4 text-sm font-mono outline-none focus:ring-1 focus:ring-blue-500" placeholder="Paste: SM-E076BDBAINS"></textarea>
+                    </div>
+                    <button onclick="startMining()" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-black text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-600/20">Start Mining</button>
                 </div>
             </div>
 
             <div class="lg:col-span-8">
-                <div class="glass rounded-[2rem] overflow-hidden">
-                    <div class="p-4 border-b border-white/5 flex justify-between bg-white/[0.01]">
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">EXTRACTION RESULTS</span>
+                <div class="glass rounded-[2rem] overflow-hidden border-white/5">
+                    <div class="p-5 border-b border-white/5 flex justify-between items-center bg-white/[0.01]">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Extraction Dashboard</span>
                         <div class="flex gap-2">
-                            <button onclick="clearAll()" class="px-3 py-1 bg-white/5 hover:bg-red-500/20 rounded-lg text-[10px] font-bold uppercase">Clear</button>
-                            <button onclick="exportCSV()" class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg text-[10px] font-bold uppercase">Export CSV</button>
+                            <button onclick="clearAll()" class="px-4 py-2 bg-white/5 hover:bg-red-500/10 hover:text-red-400 rounded-lg text-[10px] font-bold uppercase transition-all">Clear</button>
+                            <button onclick="exportCSV()" class="px-4 py-2 bg-blue-600/10 text-blue-400 hover:bg-blue-600/20 rounded-lg text-[10px] font-bold uppercase transition-all">Export CSV</button>
                         </div>
                     </div>
-                    <div class="overflow-x-auto max-h-[450px]">
-                        <table class="w-full text-left text-xs">
-                            <thead class="bg-slate-900 sticky top-0">
-                                <tr>
-                                    <th class="p-4 text-slate-500 font-bold uppercase">Product & Model</th>
-                                    <th class="p-4 text-slate-500 font-bold uppercase">Attributes Identified</th>
-                                    <th class="p-4 text-slate-500 font-bold uppercase">Status</th>
+                    <div class="overflow-x-auto h-[450px]">
+                        <table class="w-full text-left text-sm">
+                            <thead class="sticky top-0 bg-[#0b0f1a] z-10">
+                                <tr class="border-b border-white/5">
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase tracking-widest">Product Info</th>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase tracking-widest">Attributes</th>
+                                    <th class="p-6 text-slate-500 text-[10px] font-black uppercase tracking-widest">Extraction Status</th>
                                 </tr>
                             </thead>
                             <tbody id="results-body" class="divide-y divide-white/5">
@@ -87,36 +88,38 @@
         }
 
         function exportCSV() {
-            const tableBody = document.getElementById('results-body');
-            if (tableBody.rows.length === 0) return alert("No data to export!");
-            
-            let csv = "Model,Attributes,Status\n";
-            Array.from(tableBody.rows).forEach(row => {
-                const cols = Array.from(row.cells).map(c => `"${c.innerText.trim()}"`);
-                csv += cols.join(",") + "\n";
-            });
-
-            const blob = new Blob([csv], { type: 'text/csv' });
+            const rows = Array.from(document.querySelectorAll("tr"));
+            if (document.getElementById('results-body').rows.length === 0) return alert("No data found to export!");
+            let csvContent = rows.map(r => Array.from(r.querySelectorAll("th,td")).map(c => `"${c.innerText.replace(/\n/g, ' ')}"`).join(",")).join("\n");
+            const blob = new Blob([csvContent], { type: 'text/csv' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = "Mining_Results.csv";
+            link.download = "Sourcing_Results_" + new Date().toISOString().slice(0,10) + ".csv";
             link.click();
         }
 
         function startMining() {
             const input = document.getElementById('model-input').value.trim();
-            if(!input) return alert("Please enter models!");
-            
+            if(!input) return alert("Please enter a model number!");
             const models = input.split('\n');
             const body = document.getElementById('results-body');
             
             models.forEach(m => {
                 if(m.trim()) {
                     body.innerHTML += `
-                        <tr class="hover:bg-white/5">
-                            <td class="p-4 font-bold text-white">${m.trim()}</td>
-                            <td class="p-4 text-slate-400 italic">Waiting for Python Engine...</td>
-                            <td class="p-4"><span class="text-blue-400 font-bold uppercase text-[9px] animate-pulse">Running</span></td>
+                        <tr class="hover:bg-white/[0.02] transition-colors">
+                            <td class="p-6">
+                                <div class="text-white font-bold">${m.trim()}</div>
+                                <div class="text-[9px] text-slate-500 mt-1">OEM Sourcing Active</div>
+                            </td>
+                            <td class="p-6">
+                                <div class="text-slate-400 italic text-xs animate-pulse">Scanning attributes...</div>
+                            </td>
+                            <td class="p-6">
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-md text-[9px] font-bold uppercase tracking-tighter">
+                                    Searching: ${m.trim()}
+                                </span>
+                            </td>
                         </tr>`;
                 }
             });
