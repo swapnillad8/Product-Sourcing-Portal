@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Product Miner Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+        input[type="checkbox"]:checked + span { color: #60a5fa; font-weight: 600; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+        <div>
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">Data Sourcing Portal</h1>
+            <p class="text-slate-400 text-sm">Universal Multi-Brand SKU Miner</p>
+        </div>
+        <div class="flex gap-4">
+            <div class="glass p-4 rounded-2xl min-w-[120px] text-center">
+                <span class="block text-xs text-slate-500 uppercase">Models</span>
+                <span class="text-2xl font-semibold">0</span>
+            </div>
+            <div class="glass p-4 rounded-2xl min-w-[120px] text-center border-emerald-500/30">
+                <span class="block text-xs text-slate-500 uppercase">Active</span>
+                <span class="text-2xl font-semibold text-emerald-400">Ready</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-1 space-y-6">
+            <div class="glass p-6 rounded-3xl space-y-4">
+                <label class="block text-sm font-medium text-slate-300">Target Region</label>
+                <select class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option>India (IN)</option>
+                    <option>Middle East (UAE/KSA)</option>
+                    <option>Europe (EU)</option>
+                    <option>United States (US)</option>
+                </select>
+
+                <label class="block text-sm font-medium text-slate-300">Bulk Model Input / SKU</label>
+                <textarea placeholder="Paste models here (one per line)...&#10;Example:&#10;A3520&#10;WA70A4002GS" 
+                    class="w-full h-48 bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-sm font-mono focus:border-blue-500 outline-none"></textarea>
+                
+                <button class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold transition-all accent-glow">
+                    Start Mining Data
+                </button>
+                <button class="w-full py-2 text-slate-400 text-sm hover:text-white transition-colors">
+                    Download Sample CSV Template
+                </button>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-6">
+            <div class="glass p-6 rounded-3xl overflow-x-auto">
+                <h3 class="text-xs font-bold text-slate-500 uppercase mb-4 tracking-widest">Mining Attributes (Horizontal Selection)</h3>
+                <div class="flex gap-8 whitespace-nowrap pb-2">
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" checked class="w-5 h-5 rounded border-slate-700 bg-slate-800 checked:bg-blue-500">
+                        <span class="text-sm text-slate-400 group-hover:text-slate-200 transition-colors">Brand</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" checked class="w-5 h-5 rounded border-slate-700 bg-slate-800 checked:bg-blue-500">
+                        <span class="text-sm text-slate-400 group-hover:text-slate-200 transition-colors">RAM/Storage</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" class="w-5 h-5 rounded border-slate-700 bg-slate-800 checked:bg-blue-500">
+                        <span class="text-sm text-slate-400 group-hover:text-slate-200 transition-colors">Load Type</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" class="w-5 h-5 rounded border-slate-700 bg-slate-800 checked:bg-blue-500">
+                        <span class="text-sm text-slate-400 group-hover:text-slate-200 transition-colors">Door Type</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input type="checkbox" class="w-5 h-5 rounded border-slate-700 bg-slate-800 checked:bg-blue-500">
+                        <span class="text-sm text-slate-400 group-hover:text-slate-200 transition-colors">Connectivity</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="glass rounded-3xl overflow-hidden">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-white/5 border-b border-white/10">
+                        <tr>
+                            <th class="p-4 font-semibold text-slate-400 uppercase text-xs">Product Details</th>
+                            <th class="p-4 font-semibold text-slate-400 uppercase text-xs">Target Country</th>
+                            <th class="p-4 font-semibold text-slate-400 uppercase text-xs">Attributes Found</th>
+                            <th class="p-4 font-semibold text-slate-400 uppercase text-xs">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+                            <td class="p-4">
+                                <div class="font-bold">A3520</div>
+                                <div class="text-xs text-slate-500">Apple iPhone 16 Pro</div>
+                            </td>
+                            <td class="p-4 text-slate-300">Europe (Global)</td>
+                            <td class="p-4">
+                                <span class="bg-blue-500/10 text-blue-400 px-2 py-1 rounded text-xs">12 SKUs Found</span>
+                            </td>
+                            <td class="p-4 text-emerald-400">● Mined</td>
+                        </tr>
+                        <tr class="bg-slate-900/50">
+                            <td colspan="4" class="p-0">
+                                <div class="p-4 ml-8 border-l border-blue-500/30 space-y-2">
+                                    <div class="flex justify-between text-xs text-slate-400 bg-white/5 p-2 rounded">
+                                        <span>SKU: MG6M4QN/A</span>
+                                        <span>Color: Natural Titanium</span>
+                                        <span>Storage: 256GB</span>
+                                        <span class="text-blue-400 underline cursor-pointer">View Source</span>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-slate-400 bg-white/5 p-2 rounded">
+                                        <span>SKU: MG6N4QN/A</span>
+                                        <span>Color: Black Titanium</span>
+                                        <span>Storage: 512GB</span>
+                                        <span class="text-blue-400 underline cursor-pointer">View Source</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
