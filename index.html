@@ -127,7 +127,7 @@
             link.click();
         }
         async function triggerMining(models) {
-    const token = "YOUR_GITHUB_TOKEN"; // Personal Access Token
+    const token = "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"; // Personal Access Token
     const repo = "swapnillad8/Product-Sourcing-Portal";
 
     await fetch(`https://api.github.com/repos/${repo}/actions/workflows/run_miner.yml/dispatches`, {
@@ -162,7 +162,8 @@
     await triggerMining(models);
 
     // wait for GitHub Action (~20–40 sec)
-    setTimeout(fetchResults, 30000);
+    setTimeout(fetchResults, 60000);
+    setInterval(fetchResults, 15000);
 }
     </script>
 </body>
