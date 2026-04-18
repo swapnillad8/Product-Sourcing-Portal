@@ -1,0 +1,21 @@
+name: Data Mining Engine
+on: 
+  workflow_dispatch: # Allows you to trigger it manually from the UI
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: { python-version: '3.9' }
+      - name: Install Scraper Tools
+        run: pip install requests beautifulsoup4
+      - name: Run Miner
+        run: python miner.py
+      - name: Commit Results
+        run: |
+          git config --global user.name "Mining-Bot"
+          git add results.csv
+          git commit -m "Update Mined Data"
+          git push
